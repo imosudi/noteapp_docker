@@ -1,0 +1,96 @@
+{% block navbar %}
+<div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills float-right">
+
+            {% if session.logged_in != True %}
+            <li class="nav-item">
+            		{% if pageName == "home" %}
+            			<a class="nav-link active" href="/">
+            		{% else %}
+            			<a class="nav-link " href="/">
+            		{% endif %}
+            	   Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% endif %}
+
+            {% if pageName == "/notes/create" %}
+            <li class="nav-item">
+            		{% if pageName == "home" %}
+            			<a class="nav-link active" href="/">
+            		{% else %}
+            			<a class="nav-link " href="/">
+            		{% endif %}
+            	   Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% endif %}
+
+		{% if session.logged_in != True %}
+		    <li class="nav-item">
+			{% if pageName == "/register" %}
+				<a class="nav-link active" href="/register">
+			{% else %}
+				<a class="nav-link " href="/register">
+			{% endif %}
+		Register</a>
+		    </li>
+		{% endif %}
+
+		{% if session.logged_in == True %}
+		    <li class="nav-item">
+		        {% if pageName == "/notes/create" %}
+		                <a class="nav-link active" href="/notes/create">
+		        {% else %}
+		                <a class="nav-link " href="/notes/create">
+		        {% endif %}
+		CreateNote</a>
+		    </li>
+		{% endif %}
+
+
+		    <!--li class="nav-item">
+			{#% if pageName == "/notes" %#}
+				<a class="nav-link active" href="/notes">
+			{#% else %#}
+				<a class="nav-link " href="/notes">
+			{#% endif %#}
+		ViewNote</a>
+		    </li-->
+
+
+		{% if session.logged_in != True %}
+		    <li class="nav-item">
+			{% if pageName == "login" %}
+				<a class="nav-link active" href="#">
+			{% else %}
+				<a class="nav-link " href="/login">
+			{% endif %}
+		Login</a>
+		    </li>
+		{% endif %}
+
+
+
+    		    <li class="nav-item">
+    			{% if pageName == "about" %}
+    				<a class="nav-link active" href="/about">
+    			{% else %}
+    				<a class="nav-link " href="/about">
+    			{% endif %}
+    		About</a>
+    		    </li>
+
+
+			<li>
+			{% if session.logged_in == True %}
+				<a href="/logout" type="button" class="btn btn-outline-info">Logout</a>
+			{% endif %}
+			</li>
+
+          </ul>
+        </nav>
+	<h3 class="font-weight-bold" >
+        <a href="/" class="text-primary" style="font-family: 'Indie Flower', cursive;">notes</a><a href="/" class="text-success" style="font-family: 'Raleway', sans-serif;">App</a></h3>
+      </div>
+{% endblock %}

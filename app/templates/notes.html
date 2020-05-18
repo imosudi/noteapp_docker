@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+{% block page_content %}  
+
+<!--form  action="/notes/create" method="POST">
+</form-->
+<div class=" border border-success">
+		
+
+<div class="container container-fluid"  >
+<div id="map" class="border border-primary rounded" style="height:500px;margin-top: 10px;margin-bottom: 10px;">
+
+<div class="row">
+
+      {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+               <li<{{ message }}</li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+
+{% for noted in notes %} 
+
+                        <div class="col-md-2">{{noted.id}}</div>
+                        <div class="col-md-3">{{noted.title}}</div>
+                        <div class="col-md-7">{{noted.body}}</div>
+               
+{% endfor %}
+
+
+{% for user in users %} 
+
+                        <div class="col-md-2">{{user.id}}</div>
+                        <div class="col-md-3">{{user.username}}</div>
+                        <div class="col-md-7">{{user.email}}</div>
+               
+{% endfor %}
+</div>
+</div><!--border-primary-->
+</div><!--container-fluid-->
+</div><!--border-success-->
+
+{% endblock %}
+
+
+

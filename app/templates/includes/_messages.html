@@ -1,0 +1,16 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="text-{{ category }}"><p>{{ message }}</p></div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+{% if error %}
+      <div class="text-warning"><p>{{ error }}</p></div>
+{% endif %}
+
+
+{% if msg %}
+      <div class="text-success"><p>{{ msg }}</p></div>
+{% endif %}

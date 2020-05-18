@@ -1,0 +1,77 @@
+
+{% extends "base.html" %}
+{% block page_content %}
+
+
+<div class="container content-center">
+{% from "includes/_formhelpers.html" import render_field %}
+	<form method="POST" action="" class="container">
+
+		<div class="form-group">
+			{{render_field(form.title, class_="form-control col col-lg-3 ", maxlength="12")}}
+		</div>
+
+		<div class="form-group">
+			{{render_field(form.body, class_="form-control", id="noteeditor", maxlength="270" )}}
+		</div>
+
+		<div class="form-group">
+			{{render_field(form.username, class_="form-control", value=session.username)}}
+		</div>
+
+
+		<p>
+			<button type="submit" class="btn btn-primary">Create note</button>
+			 <button type="reset"  onclick="clearnoteeditor();" class="btn btn-danger">Cancel note</button>
+
+
+		</p>
+	</form>
+</div>
+
+
+<!--form  action="/notes/create" method="POST">
+	<div class="row">    <label class="btn btn-lg btn-primary">Title</label>
+    <input type="text" name="title">
+
+    <label class="btn btn-lg btn-primary" >Body</label>
+    <input type="text" name="body">
+
+    <input class="btn btn-lg btn-primary" role="button" type="submit" value="Create">
+</form-->
+<!--
+            <div id="messages" class="hide" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <div id="messages_content"></div>
+            </div>
+-->
+
+<!--form id="noteForm" action="/notes/create" method="POST" onSubmit="alert('Your note has been created.');">
+  <fieldset>
+    <legend class="text-success" style="font-family: 'Cambay', sans-serif;">Create note</legend>
+    <div class="form-group">
+	 <input class="form-control" id="title" name="title" aria-describedby="titlelHelp" placeholder="Enter Note Title" type="text" maxlength="50" required >
+      <small id="titleHelp" class="form-text text-muted">Make your title brief, then you can provide the note body below.</small>
+    </div-->
+
+<!--div class="form-group">
+      <!-label for="exampleTextarea">Title </label->
+      <textarea class="form-control" id="body" name="body" rows="7" maxlength="600" required > </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </fieldset>
+</form>
+<div id="submitNotice"></div-->
+
+<!--        <script>
+            $('#noteForm').submit(function(e) {
+                $('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
+                $('#messages_content').html('<h4>MESSAGE HERE</h4>');
+                $('#modal').modal('show');
+                e.preventDefault();
+            });
+        </script>
+-->
+
+
+{% endblock %}

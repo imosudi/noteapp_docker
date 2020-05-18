@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="container content-center">
+
+<div class="jumbotron" style="  padding-top: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  border:round;
+  border-radius:5px;">
+  <h3 class="display-5 text-primary" style="font-family: 'Roboto', sans-serif;text-transform: capitalize;" >
+    Hi, {{ session.name}}!
+  </h3>
+  <p class="lead">This is a simple note taking app, a simple style web application for taking quick notes that needs extra attention.</p>
+  <!--hr class="my-4"-->
+ </div>
+<h1>{{ mosudreferrer }}</h1>
+<h1>{{ mosudiurl }}</h1>
+{% for note in notes| sort(attribute='id', reverse = True)  %}
+	<div class="card rounded">
+	  <div class="card-body">
+	    <h4 class="card-title text-success text-capitalize"> {{ note.title }} </h4>
+	    <p class="card-text" style="font-family: 'Lato', sans-serif;">{{ note.body|safe }}</p>
+		<small> Written by {{ note.username }} on {{note.create_date}}  </small>
+    <p>
+    <ul class="nav nav-pills float-right">
+      <li class="nav-item">
+        <form  action="{{ url_for('note_preedit', id=note.id )}}" method="post">
+          <input type="hidden" name="note_id" value="{{note.id}}">
+          <input type="submit" class="btn btn-primary " value="Edit">
+        </form>
+         <!--a href="/notes/edit/{{ note.id }}"
+        type="button" class="btn btn-outline-primary"> Edit </a-->
+      </li>
+      <li class="nav-item">
+        <form  action="{{ url_for('note_delete', id=note.id )}}" method="post">
+          <input type="hidden" name="note_id" value="{{note.id}}">
+          <input type="submit" class="btn btn-danger " value="Delete">
+        </form>
+      </li>
+    </ul>
+  </p>
+	  </div>
+	</div>
+{% endfor %}
+
+</div>
+{% endblock %}
