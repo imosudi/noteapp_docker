@@ -1,26 +1,36 @@
-#FROM python:3.8.3-alpine3.11 
+FROM python:3.8.3-alpine3.11 
 
-FROM alpine:3.11.6
+#FROM alpine:3.11.6
 
-MAINTAINER imosudi@gmail.com
+LABEL maintainer="imosudi@gmail.com"
 
 
-RUN apk --update add python3.8 python3.8-dev
+RUN apk update add python3-dev 
+
+#pip3 py-pip
+
+#RUN apk add --update py3-pip3
+
+RUN python3.8 -m pip install --upgrade pip
 
 WORKDIR /noteapp_docker
 
 
 COPY ./requirements.txt /noteapp_docker
 
+#RUN pip3 install --upgrade pip setuptools
+
+#RUN python -m pip install --upgrade pip
+
 RUN pip3 install -r requirements.txt
 
 COPY  . .
 
 
-ENV PORT 5000
+EXPOSE 5000
 
-ENV PORT 56733
+EXPOSE 56733
 
 #CMD ["/usr/bin/python3", "app.py"]
 
-CMD ["/usr/bin/python3", "main.py"]
+CMD ["python3", "main.py"]
