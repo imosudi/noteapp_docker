@@ -5,7 +5,7 @@ FROM python:3.8.3-alpine3.11
 LABEL maintainer="imosudi@gmail.com"
 
 
-RUN apk update add python3-dev 
+RUN apk update add python3-dev build-deps gcc python3-dev musl-dev mysql-client libmysqlclient-dev
 
 #pip3 py-pip
 
@@ -22,7 +22,10 @@ COPY ./requirements.txt /noteapp_docker
 
 #RUN python -m pip install --upgrade pip
 
+#RUN pip3 install mysql-python mysqlclient
+
 RUN pip3 install -r requirements.txt
+
 
 COPY  . .
 

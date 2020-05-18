@@ -1,4 +1,0 @@
-
-CREATE USER 'noteapp'@'%' IDENTIFIED BY 'PASSWimosudi@gmail.co767868FFGFFDD#m'; 
-GRANT ALL PRIVILEGES ON c6noteapp.* TO 'c6noteapp'@'localhost' IDENTIFIED BY 'PASSWimosudi@gmail.co767868FFGFFDD#m'; 
-FLUSH PRIVILEGES;
