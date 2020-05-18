@@ -8,7 +8,7 @@ ENV MYSQL_DATABASE noteapp
 
 # All scripts in docker-entrypoint-initdb.d/ 
 # are automatically executed during container startup
-COPY ./database/sqlscripts/ /docker-entrypoint-initdb.d/
+COPY ./sqlscripts/ /docker-entrypoint-initdb.d/
 
 
 #docker build -t imosudi/noteappdb .
