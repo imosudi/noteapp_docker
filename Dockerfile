@@ -5,13 +5,13 @@ FROM python:3.8.3-alpine3.11
 LABEL maintainer="imosudi@gmail.com"
 
 
-RUN apk update add python3-dev build-deps gcc python3-dev musl-dev mysql-client libmysqlclient-dev
+RUN apk update add python3-dev build-deps gcc python3-dev musl-dev mysql-client libmariadbclient-dev libmysqlclient-dev
 
 #pip3 py-pip
 
 #RUN apk add --update py3-pip3
 
-RUN python3.8 -m pip install --upgrade pip libmariadbclient-dev
+RUN python3.8 -m pip install --upgrade pip 
 
 WORKDIR /noteapp_docker
 
