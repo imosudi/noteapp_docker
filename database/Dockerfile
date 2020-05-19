@@ -2,13 +2,13 @@
 #FROM mysql
 FROM mariadb
 
-# Add a database
-ENV MYSQL_DATABASE noteapp
+
 
 #Use docker secret in PRODUCTION
 ENV MYSQL_ROOT_PASSWORD PASSWimosudi@gmail.co767868FFGFFDD#m
 
-
+# Add a database
+ENV MYSQL_DATABASE noteapp
 
 # All scripts in docker-entrypoint-initdb.d/ 
 # are automatically executed during container startup

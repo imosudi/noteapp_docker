@@ -13,7 +13,7 @@ moment = Moment(app)
 
 
 #Config MySQL
-app.config['MYSQL_HOST'] = 'noteappdb'
+app.config['MYSQL_HOST'] = '172.17.0.2'
 app.config['MYSQL_USER'] = 'root'
 #app.config['MYSQL_PASSWORD'] = 'imosudi@gmail.com'
 app.config['MYSQL_PASSWORD'] = 'PASSWimosudi@gmail.co767868FFGFFDD#m'
