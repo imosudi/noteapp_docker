@@ -1,6 +1,12 @@
 from flask import render_template, Blueprint 
 
 
+from flask_wtf import FlaskForm
+from wtforms import Form, BooleanField, StringField, PasswordField, validators, SubmitField, IntegerField, HiddenField
+from wtforms.validators import Required
+from passlib.hash import sha256_crypt
+
+
 
 from app import app
 
