@@ -4,6 +4,7 @@ from flask_moment import Moment
 #from flask_mysqldb import MySQL
 import mysql.connector as mariadb
 
+from .models import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
@@ -28,7 +29,7 @@ mysql = MySQL(app)"""
 
 #Config Mariadb
 config = {
-    'host': '172.17.0.2',
+    'host': '172.17.0.3',
     'port': 3306,
     'user': 'root',
     'password': 'PASSWimosudi@gmail.co767868FFGFFDD#m',

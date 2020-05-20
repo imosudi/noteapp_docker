@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint 
+from flask import render_template, Blueprint, request
 
 
 from flask_wtf import FlaskForm
@@ -11,6 +11,7 @@ from passlib.hash import sha256_crypt
 from app import app
 
 
+from .models import *
 
 
 from datetime import datetime
@@ -41,10 +42,52 @@ def register():
     return render_template('register.html', form=form, pageName=pageName, current_time=datetime.utcnow())
 
 # User login
-@main.route("/login", methods=['GET', 'POST'])
+@main.route('/login', methods=['GET', 'POST'])
 def login():
 	pageName = 'login'
-	render_template('login.html', pageName=pageName, current_time=datetime.utcnow())
+	form = loginForm(request.form)
+	if request.method == 'POST':
+		# login form data
+		username = request.form['username']
+		password_candidate = request.form['password']
+
+		# create a connection cursor
+		conn = mariadb.connect(**config)
+		# login cursor
+		cur = conn.cursor()
+
+		# Getting looking up for the user in the database by username
+		result = cur.execute("SELECT * FROM users WHERE username = %s", [username])
+
+		if result > 0:
+			#Extract hash
+			data = cur.fetchone()
+			password = data['password']
+			name = data['name'] #Fetching Name Details from Database
+
+			#Compare passwords
+			if sha256_crypt.verify(password_candidate, password):
+				#Getting session details
+				session['logged_in'] = True
+				session['username'] = username
+				session['name'] = name
+
+				flash(u'Login successful', 'success')
+				return redirect(url_for('dashboard'))
+
+			else:
+				#app.logger.info('PASSWORD NOT MATCHED')
+				error = 'Invalid login'
+				return render_template('login.html', pageName=pageName, form=form, current_time=datetime.utcnow(), error=error)
+
+
+		else:
+			#app.logger.info('NO USER FOUND')
+			error = 'Username not found'
+			return render_template('login.html', pageName=pageName, form=form, current_time=datetime.utcnow(), error=error)
+
+	else:
+		return render_template('login.html', pageName=pageName, form=form, current_time=datetime.utcnow())
 
 """@app.route("/")
 def home():
