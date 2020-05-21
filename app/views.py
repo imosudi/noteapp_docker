@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request
+from flask import render_template, Blueprint, request, flash, redirect, url_for
 
 
 from flask_wtf import FlaskForm
@@ -67,8 +67,9 @@ def login():
 
 		# Getting looking up for the user in the database by username
 		result = cur.execute("SELECT * FROM users WHERE username = %s", [username])
+		print (result)
 
-		if result > 0:
+		if result != None :
 			#Extract hash
 			data = cur.fetchone()
 			password = data['password']
@@ -128,14 +129,14 @@ def register():
 	 %s, %s,%s)", (name, username, email, password))
 
 		# Commit to database
-		conn.connection.commit()
+		#con.connection.commit()
 
 		# Close database connection
 		cur.close()
 
 		flash(u"Registration Complete, you may proceed to login", "success")
 
-		return redirect(url_for('home'))
+		return redirect(url_for('main.home'))
 
 	else:
 		return render_template('register.html', form=form, pageName=pageName,  current_time=datetime.utcnow())
