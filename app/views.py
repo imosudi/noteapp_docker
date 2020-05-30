@@ -13,15 +13,23 @@ from app import app
 
 from .models import *
 
-import mysql.connector as mariadb
+#import mysql.connector as mariadb
+
+import pymysql.cursors
+
+
 
 config = {
-    'host': '172.17.0.2',
-    'port': 3306,
+    'host': 'db',
+    'port': '3306',
     'user': 'root',
-    'password': 'PASSWimosudi@gmail.co767868FFGFFDD#m',
+    #'password': 'PASSWimosudi@gmail.co767868FFGFFDD#m',
+    'password': 'password',
     'database': 'noteappdb'
 }
+
+
+
 
 #mariadb_connection = mariadb.connect(host='172.17.0.2', port='3306', user='root', password='sPASSWimosudi@gmail.co767868FFGFFDD#m', database='noteappdb')
 

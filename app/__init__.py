@@ -29,10 +29,11 @@ mysql = MySQL(app)"""
 
 #Config Mariadb
 config = {
-    'host': '172.17.0.2',
-    'port': 3306,
+    'host': 'db',
+    'port': '3306',
     'user': 'root',
-    'password': 'PASSWimosudi@gmail.co767868FFGFFDD#m',
+    #'password': 'PASSWimosudi@gmail.co767868FFGFFDD#m',
+    'password': 'password',
     'database': 'noteapp'
 }
 

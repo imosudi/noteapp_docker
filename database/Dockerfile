@@ -9,7 +9,9 @@ RUN sed  '/\[mysqld\]/a  bind-address = 0.0.0.0' -i /etc/mysql/my.cnf
 
 
 #Use docker secret in PRODUCTION
-ENV MYSQL_ROOT_PASSWORD PASSWimosudi@gmail.co767868FFGFFDD#m
+#ENV MYSQL_ROOT_PASSWORD PASSWimosudi@gmail.co767868FFGFFDD#m
+ENV MYSQL_ROOT_PASSWORD password
+
 
 # Add a database
 ENV MYSQL_DATABASE noteappdb
