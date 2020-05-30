@@ -16,12 +16,14 @@ from .models import *
 import mysql.connector as mariadb
 
 config = {
-    'host': '172.17.0.3',
+    'host': '172.17.0.2',
     'port': 3306,
     'user': 'root',
     'password': 'PASSWimosudi@gmail.co767868FFGFFDD#m',
-    'database': 'noteapp'
+    'database': 'noteappdb'
 }
+
+#mariadb_connection = mariadb.connect(host='172.17.0.2', port='3306', user='root', password='sPASSWimosudi@gmail.co767868FFGFFDD#m', database='noteappdb')
 
 from datetime import datetime
 
@@ -118,6 +120,8 @@ def register():
 		username = form.username.data
 		email = form.email.data
 		password = sha256_crypt.encrypt(str(form.password.data))
+
+		mariadb_connection = mariadb.connect(host='172.17.0.2', port='3306', user='root', password='sPASSWimosudi@gmail.co767868FFGFFDD#m', database='noteappdb')
 
 		# create a connection cursor
 		conn = mariadb.connect(**config)

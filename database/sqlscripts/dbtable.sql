@@ -1,4 +1,6 @@
-CREATE TABLE noteapp.users ( 
+GRANT ALL ON noteappdb.* TO root@ALL IDENTIFIED BY 'PASSWimosudi@gmail.co767868FFGFFDD#m';
+
+CREATE TABLE noteappdb.users ( 
 	id INT(50) NOT NULL AUTO_INCREMENT , 
 	email VARCHAR(150) NULL DEFAULT NULL , 
 	name VARCHAR(150) NULL DEFAULT NULL , 
@@ -6,7 +8,7 @@ CREATE TABLE noteapp.users (
 	password VARCHAR(150) NULL DEFAULT NULL , 
 	INDEX (id)) ENGINE = InnoDB;
 
-CREATE TABLE noteapp.notes ( 
+CREATE TABLE noteappdb.notes ( 
 	id INT(50) NOT NULL AUTO_INCREMENT , 
 	title VARCHAR(100) NULL DEFAULT NULL , 
 	body VARCHAR(450) NULL DEFAULT NULL , 
