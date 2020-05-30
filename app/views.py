@@ -13,7 +13,7 @@ from app import app
 
 from .models import *
 
-#import mysql.connector as mariadb
+import mysql.connector as mariadb
 
 import pymysql.cursors
 
@@ -129,7 +129,7 @@ def register():
 		email = form.email.data
 		password = sha256_crypt.encrypt(str(form.password.data))
 
-		mariadb_connection = mariadb.connect(host='172.17.0.2', port='3306', user='root', password='sPASSWimosudi@gmail.co767868FFGFFDD#m', database='noteappdb')
+		mariadb_connection = mariadb.connect(host='db', port='3306', user='root', password='sPASSWimosudi@gmail.co767868FFGFFDD#m', database='noteappdb')
 
 		# create a connection cursor
 		conn = mariadb.connect(**config)
