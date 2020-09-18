@@ -1,4 +1,4 @@
-GRANT ALL ON noteappdb.* TO root@ALL IDENTIFIED BY 'PASSWimosudi@gmail.co767868FFGFFDD#m';
+GRANT ALL PRIVILEGES ON noteappdb.* TO noteappdb@ALL IDENTIFIED BY 'password';
 
 CREATE TABLE noteappdb.users ( 
 	id INT(50) NOT NULL AUTO_INCREMENT , 

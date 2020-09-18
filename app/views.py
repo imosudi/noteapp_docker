@@ -18,7 +18,7 @@ import mysql.connector as mariadb
 import pymysql.cursors
 
 
-
+"""
 config = {
     'host': 'db',
     'port': '3306',
@@ -27,7 +27,7 @@ config = {
     'password': 'password',
     'database': 'noteappdb'
 }
-
+"""
 
 
 
@@ -71,7 +71,11 @@ def login():
 		password_candidate = request.form['password']
 
 		# create a connection cursor
-		conn = mariadb.connect(**config)
+		#conn = mariadb.connect(**config)
+		conn = mariadb.connect(host='db',
+                                         database='noteappdb',
+                                         user='noteappdb',
+                                         password='password')
 		# login cursor
 		cur = conn.cursor()
 
@@ -127,12 +131,17 @@ def register():
 		name = form.name.data
 		username = form.username.data
 		email = form.email.data
-		password = sha256_crypt.encrypt(str(form.password.data))
+		#password = sha256_crypt.encrypt(str(form.password.data))
+		password = form.password.data
 
-		mariadb_connection = mariadb.connect(host='db', port='3306', user='root', password='sPASSWimosudi@gmail.co767868FFGFFDD#m', database='noteappdb')
+		#mariadb_connection = mariadb.connect(host='db', port='3306', user='noteappdb', password='password', database='noteappdb')
+		conn = mariadb.connect(host='db',
+                                         database='noteappdb',
+                                         user='noteappdb',
+                                         password='password')
 
 		# create a connection cursor
-		conn = mariadb.connect(**config)
+		#conn = mariadb.connect(**config)
 
 		# login cursor 
 		cur = conn.cursor()

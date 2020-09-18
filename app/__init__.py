@@ -27,6 +27,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MySQL
 mysql = MySQL(app)"""
 
+"""
 #Config Mariadb
 config = {
     'host': 'db',
@@ -36,7 +37,7 @@ config = {
     'password': 'password',
     'database': 'noteappdb'
 }
-
+"""
 #I will use this to for my conections within the application
 ''' # connection for MariaDB
    conn = mariadb.connect(**config)
