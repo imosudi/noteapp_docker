@@ -16,10 +16,10 @@ moment = Moment(app)
 
 """#Config MySQL
 app.config['MYSQL_HOST'] = '172.17.0.2'
-app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_USER'] = 'noteappdb'
 #app.config['MYSQL_PASSWORD'] = 'imosudi@gmail.com'
-app.config['MYSQL_PASSWORD'] = 'PASSWimosudi@gmail.co767868FFGFFDD#m'
-app.config['MYSQL_DB'] = 'noteapp'
+app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_DB'] = 'noteappdb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 
@@ -31,10 +31,10 @@ mysql = MySQL(app)"""
 config = {
     'host': 'db',
     'port': '3306',
-    'user': 'root',
+    'user': 'noteappdb',
     #'password': 'PASSWimosudi@gmail.co767868FFGFFDD#m',
     'password': 'password',
-    'database': 'noteapp'
+    'database': 'noteappdb'
 }
 
 #I will use this to for my conections within the application

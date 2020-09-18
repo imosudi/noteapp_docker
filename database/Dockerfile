@@ -1,20 +1,20 @@
 # Official mysql image as the base image
 #FROM mysql
-FROM mariadb
+#FROM mariadb
 
-#RUN sed -e '/BBB/s/^/#/g' -i /etc/mysql/my.cnf
+FROM mysql:latest
 
-RUN sed  '/\[mysqld\]/a skip-networking'  -i /etc/mysql/my.cnf 
-RUN sed  '/\[mysqld\]/a  bind-address = 0.0.0.0' -i /etc/mysql/my.cnf
 
 
 #Use docker secret in PRODUCTION
 #ENV MYSQL_ROOT_PASSWORD PASSWimosudi@gmail.co767868FFGFFDD#m
-ENV MYSQL_ROOT_PASSWORD password
+ENV MYSQL_ROOT_PASSWORD=password
 
 
 # Add a database
-ENV MYSQL_DATABASE noteappdb
+ENV MYSQL_DATABASE=noteappdb
+ENV MYSQL_USER=noteappdb
+ENV MYSQL_PASSWORD=password
 
 # All scripts in docker-entrypoint-initdb.d/ 
 # are automatically executed during container startup

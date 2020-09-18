@@ -22,7 +22,7 @@ import pymysql.cursors
 config = {
     'host': 'db',
     'port': '3306',
-    'user': 'root',
+    'user': 'noteappdb',
     #'password': 'PASSWimosudi@gmail.co767868FFGFFDD#m',
     'password': 'password',
     'database': 'noteappdb'
