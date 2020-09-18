@@ -28,6 +28,12 @@ config = {
     'database': 'noteappdb'
 }
 """
+config = {
+	'host': 'db',
+        'database': 'noteappdb',
+        'user': 'noteappdb',
+        'password': 'password'
+        }
 
 
 
@@ -70,12 +76,11 @@ def login():
 		username = request.form['username']
 		password_candidate = request.form['password']
 
-		# create a connection cursor
-		#conn = mariadb.connect(**config)
-		conn = mariadb.connect(host='db',
-                                         database='noteappdb',
-                                         user='noteappdb',
-                                         password='password')
+				
+		#Connect to DB server
+		conn = mariadb.connect(**config)
+		
+		
 		# login cursor
 		cur = conn.cursor()
 
@@ -131,15 +136,13 @@ def register():
 		name = form.name.data
 		username = form.username.data
 		email = form.email.data
-		#password = sha256_crypt.encrypt(str(form.password.data))
-		password = form.password.data
-
-		#mariadb_connection = mariadb.connect(host='db', port='3306', user='noteappdb', password='password', database='noteappdb')
-		conn = mariadb.connect(host='db',
-                                         database='noteappdb',
-                                         user='noteappdb',
-                                         password='password')
-
+		password = sha256_crypt.encrypt(str(form.password.data))
+		#password = form.password.data
+		
+		
+		#Connect to DB server
+		conn = mariadb.connect(**config)
+		
 		# create a connection cursor
 		#conn = mariadb.connect(**config)
 
