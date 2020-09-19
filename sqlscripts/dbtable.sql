@@ -1,4 +1,7 @@
+/*
 GRANT ALL PRIVILEGES ON noteappdb.* TO noteappdb@ALL IDENTIFIED BY 'password';
+*/
+GRANT ALL PRIVILEGES ON noteappdb.* TO noteappdb@ALL ;
 
 CREATE TABLE noteappdb.users ( 
 	id INT(50) NOT NULL AUTO_INCREMENT , 
