@@ -1,4 +1,4 @@
-# noteapp_docker
+﻿# noteapp_docker
 Dockerizing a basic CRUD Python web application.
 
 Ensure that Docker and Docker compose are installed
@@ -7,4 +7,13 @@ Ensure that Docker and Docker compose are installed
 	cd noteapp_docker
 	docker container prune -f && docker image prune -f
 	docker-compose up --build 
+
+
+
+
+
+
+
+
+
 
