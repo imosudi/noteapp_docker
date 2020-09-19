@@ -21,7 +21,7 @@ ENV MYSQL_PASSWORD=password
 
 COPY ./sqlscripts/ /docker-entrypoint-initdb.d
 
-ADD sqlscripts/init.sql /docker-entrypoint-initdb.d
+#ADD sqlscripts/init.sql /docker-entrypoint-initdb.d
 
 RUN chown -R mysql:mysql /docker-entrypoint-initdb.d/
 
