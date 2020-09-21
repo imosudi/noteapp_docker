@@ -1,11 +1,11 @@
-FROM python:3.8.3-alpine3.11 
+FROM python:3 
 
 #FROM alpine:3.11.6
 
 LABEL maintainer="imosudi@gmail.com"
 
 
-RUN apk update add python3-dev build-deps gcc python3-dev musl-dev mysql-client libmariadbclient-dev libmysqlclient-dev
+#RUN apk update add python3-dev build-deps gcc python3-dev musl-dev mysql-client libmariadbclient-dev libmysqlclient-dev
 
 #pip3 py-pip
 

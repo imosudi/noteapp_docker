@@ -28,7 +28,7 @@
     <p>
     <ul class="nav nav-pills float-right">
       <li class="nav-item">
-        <form  action="{{ url_for('note_preedit', id=note.id )}}" method="post">
+        <form  action="{{ url_for('main.note_preedit', id=note.id )}}" method="post">
           <input type="hidden" name="note_id" value="{{note.id}}">
           <input type="submit" class="btn btn-primary " value="Edit">
         </form>
@@ -36,7 +36,7 @@
         type="button" class="btn btn-outline-primary"> Edit </a-->
       </li>
       <li class="nav-item">
-        <form  action="{{ url_for('note_delete', id=note.id )}}" method="post">
+        <form  action="{{ url_for('main.note_delete', id=note.id )}}" method="post">
           <input type="hidden" name="note_id" value="{{note.id}}">
           <input type="submit" class="btn btn-danger " value="Delete">
         </form>

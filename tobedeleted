@@ -394,4 +394,43 @@ def register():
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
     #manager.run(
+    
+
+#User registration
+@main.route('/register', methods=['GET', 'POST'])
+def register():
+	pageName = 'register'
+	form = registrationForm(request.form)
+	if request.method == 'POST' and  form.validate():
+		name = form.name.data
+		username = form.username.data
+		email = form.email.data
+		password = sha256_crypt.encrypt(str(form.password.data))
+		#password = form.password.data
+		
+		
+		#Connect to DB server
+		conn = mariadb.connect(**config)
+		
+		# create a connection cursor
+		#conn = mariadb.connect(**config)
+
+		# login cursor 
+		cur = conn.cursor()
+
+		cur.execute("INSERT INTO users(name, username, email, password) VALUES(%s,	\
+	 %s, %s,%s)", (name, username, email, password))
+
+		# Commit to database
+		#con.connection.commit()
+
+		# Close database connection
+		cur.close()
+
+		flash(u"Registration Complete, you may proceed to login", "success")
+
+		return redirect(url_for('main.home'))
+
+	else:
+		return render_template('register.html', form=form, pageName=pageName,  current_time=datetime.utcnow())
 
