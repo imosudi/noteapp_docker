@@ -101,8 +101,12 @@ def login():
 		if result != None :
 			#Extract hash
 			data = cur.fetchone()
-			password = data['password']
-			name = data['name'] #Fetching Name Details from Database
+			try:
+			   password = data['password']
+			   name = data['name'] #Fetching Name Details from Database
+			except:
+			    error = 'Invalid login'
+			    return render_template('login.html', pageName=pageName, form=form, current_time=datetime.utcnow(), error=error)
 
 			#Compare passwords
 			if sha256_crypt.verify(password_candidate, password):
