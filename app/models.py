@@ -26,6 +26,8 @@ class registrationForm(Form):
     ])
     confirm = PasswordField('Repeat Password')
     accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
+    #The submit button was of no effect inserting data into the table
+    #submit = SubmitField('Complete Registeration')
 
 
 class loginForm(Form):

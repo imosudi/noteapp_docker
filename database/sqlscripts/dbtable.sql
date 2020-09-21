@@ -5,7 +5,7 @@ FLUSH PRIVILEGES;
 /*CREATE USER 'jack'@'localhost' IDENTIFIED BY 'test123';*/
 CREATE USER 'noteappdb'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON noteappdb.* TO 'noteappdb'@'localhost' ;
-CREATE TABLE noteappdb.users ( 
+CREATE TABLE users ( 
 	id INT(50) NOT NULL AUTO_INCREMENT , 
 	email VARCHAR(150) NULL DEFAULT NULL , 
 	name VARCHAR(150) NULL DEFAULT NULL , 
@@ -13,7 +13,7 @@ CREATE TABLE noteappdb.users (
 	password VARCHAR(150) NULL DEFAULT NULL , 
 	INDEX (id)) ENGINE = InnoDB;
 
-CREATE TABLE noteappdb.notes ( 
+CREATE TABLE notes ( 
 	id INT(50) NOT NULL AUTO_INCREMENT , 
 	title VARCHAR(100) NULL DEFAULT NULL , 
 	body VARCHAR(450) NULL DEFAULT NULL , 
