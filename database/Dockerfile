@@ -1,8 +1,8 @@
 # Official mysql image as the base image
 #FROM mysql
-#FROM mariadb
+FROM mariadb:10.1
 
-FROM mysql:latest
+#FROM mysql:latest
 
 
 

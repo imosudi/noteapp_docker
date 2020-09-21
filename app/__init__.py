@@ -3,6 +3,8 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_mysqldb import MySQL
 
+from passlib.hash import sha256_crypt
+
 #import mysql.connector as mariadb
 
 
@@ -20,10 +22,10 @@ moment = Moment(app)
 
 
 #Config MySQL
-app.config['MYSQL_USER'] = 'sql2366691'
-app.config['MYSQL_PASSWORD'] = 'lD9%zU9%'
-app.config['MYSQL_HOST'] = 'sql2.freemysqlhosting.net'
-app.config['MYSQL_DB'] = 'sql2366691'
+app.config['MYSQL_USER'] = 'noteappdb'
+app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_HOST'] = 'db'
+app.config['MYSQL_DB'] = 'noteappdb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
