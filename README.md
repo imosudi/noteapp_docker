@@ -9,7 +9,7 @@ Ensure that Docker and Docker compose are installed
 	docker-compose up --build 
 
 
-
+<img src="https://github.com/imosudi/noteapp_docker/blob/master/app/static/images/web_view.png" />
 
 
 
