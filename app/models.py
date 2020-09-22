@@ -24,7 +24,7 @@ class registrationForm(Form):
     username = StringField('Username', [validators.Length(min=4, max=25)])
     email = StringField('Email Address', [validators.Email()])
     password = PasswordField('New Password', [
-        validators.DataRequired(),
+        validators.DataRequired(), validators.Length(min=6),
         validators.EqualTo('confirm', message='Password mismatch!')
     ])
     #file = FileField('File')
