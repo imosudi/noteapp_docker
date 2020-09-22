@@ -35,8 +35,8 @@ class registrationForm(Form):
 
 
 class loginForm(Form):
-    username = StringField('Username', validators=[Required()])
-    password = PasswordField('Login Password', validators=[Required()])
+    username = StringField( validators=[Required()])
+    password = PasswordField( validators=[Required()])
 
 class createNoteForm(Form):
     title = StringField('Title', [validators.Length(min=4, max=12)])
