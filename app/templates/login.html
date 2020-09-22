@@ -3,14 +3,14 @@
 
 {% block page_content %}  
 
-<div class="container content-center">
+<div class="container card  content-center">
 {% from "includes/_form2helpers.html" import render_field %}
 	<div class="form-group row">
 		<div class="col-8">
 			<img class="img-responsive mx-auto " style="width:100%"
 		  src="{{url_for('static', filename='images/login.jpg')}}" >
 		</div>
-		<form method="POST" action="" class="container card col-4">
+		<form method="POST" action="" class="container col-4">
 			<label for="staticEmail" class="col-form-label text-success" style="font-family: 'Raleway', sans-serif;">Username</label>
 			<div class="form-group">
 				{{render_field(form.username, class_="form-control")}}
