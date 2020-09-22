@@ -374,10 +374,10 @@ def note_delete(id):
 
 
 
-main.route('/upload')
+@main.route('/upload')
 def upload():
     pageName = "upload"
-    return render_template('upload.html', pageName=pageName, current_time=datetime.utcnow())
+    return render_template('upload_test.html', pageName=pageName, current_time=datetime.utcnow())
     pass
 
 # User Dashboard and Session
