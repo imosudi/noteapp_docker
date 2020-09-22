@@ -16,14 +16,14 @@
             {% endif %}
 
             {% if pageName == "/notes/create" %}
-            <li class="nav-item">
+            <!--li class="nav-item">
             		{% if pageName == "home" %}
             			<a class="nav-link active" href="/">
             		{% else %}
             			<a class="nav-link " href="/">
             		{% endif %}
             	   Home <span class="sr-only">(current)</span></a>
-            </li>
+            </li--->
             {% endif %}
 
 		{% if session.logged_in != True %}
@@ -39,15 +39,25 @@
 
 		{% if session.logged_in == True %}
 		    <li class="nav-item">
+		        {% if pageName == "dashboard" %}
+		                <a class="nav-link active" href="/dashboard">
+		        {% else %}
+		                <a class="nav-link " href="/dashboard">
+		        {% endif %}
+					Dashboard</a>
+		    </li>
+		{% endif %}
+
+		{% if session.logged_in == True %}
+		    <li class="nav-item">
 		        {% if pageName == "/notes/create" %}
 		                <a class="nav-link active" href="/notes/create">
 		        {% else %}
 		                <a class="nav-link " href="/notes/create">
 		        {% endif %}
-		CreateNote</a>
+					CreateNote</a>
 		    </li>
 		{% endif %}
-
 
 		    <!--li class="nav-item">
 			{#% if pageName == "/notes" %#}

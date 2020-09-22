@@ -14,10 +14,6 @@ from app import *
 
 from .models import *
 
-#from flask_mysqldb import MySQL
-#import mysql.connector as mariadb
-
-#import pymysql.cursors
 
 
 """	
@@ -55,6 +51,26 @@ def is_logged_in(f):
             return redirect(url_for('main.login'))
     return wrap
 
+"""
+def login_required(function_to_protect):
+    @wraps(function_to_protect)
+    def wrapper(*args, **kwargs):
+        user_id = request.cookies.get('YourSessionCookie')
+        if user_id:
+            user = database.get(user_id)
+            if user:
+                # Success!
+                return function_to_protect(*args, **kwargs)
+            else:
+                flash("Session exists, but user does not exist (anymore)")
+                return redirect(url_for('main.login'))
+        else:
+            flash("Please log in")
+            return redirect(url_for('main.login'))
+    return wrapper
+"""
+
+
 @main.route('/')
 def home():
 	pageName='home'
@@ -70,12 +86,6 @@ def about():
     return render_template('about.html', pageName=pageName, current_time=datetime.utcnow())
     pass
 
-"""# User registration
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    pageName= 'register'
-    return render_template('register.html', form=form, pageName=pageName, current_time=datetime.utcnow())
-"""
 # User login
 @main.route('/login', methods=['GET', 'POST'])
 def login():
@@ -83,11 +93,9 @@ def login():
 	form = loginForm(request.form)
 	if request.method == 'POST':
 		# login form data
-		#username 	= request.form['username']
-		username 	= form.username.data
-		#password_candidate = request.form['password']
-		password_candidate = form.password.data
-		#print (username, password_candidate)
+		username 	= request.form['username']
+		#username 	= form.username.data
+		password_candidate = request.form['password']
 
 				
 		#Connect to DB server
@@ -161,15 +169,6 @@ def register():
 		#password = form.password.data
 		
 		
-		#Connect to DB server
-		#conn = mariadb.connect(**config)
-		
-		# create a connection cursor
-		#conn = mariadb.connect(**config)
-
-		# login cursor 
-		#cur = conn.cursor()
-
 		cur.execute("INSERT INTO users(name, username, email, password) VALUES(%s,	\
 	 %s, %s,%s)", (name, username, email, password))
 
@@ -203,14 +202,6 @@ def dashboard():
     app.logger.info(result)
     
     notes = cur.fetchall()
-    
-    #cur.execute("SELECT COUNT(*) FROM notes WHERE username = %s", [username])
-    #countresult=cur.fetchone()
-    #number_of_rows=countresult[0]
-    #rownum=dict.values()[0]
-    #app.logger.info(countresult)
-    #app.logger.info(number_of_rows)
-    #app.logger.info(rownum)
     
     if result > 0:
         return render_template('dashboard.html', result=result, pageName=pageName, notes=notes,
@@ -316,7 +307,7 @@ def note_edit(id):
             #Close connection
             cur.close()
             
-            flash(u"Note edited and saved", "success")
+            flash(u"Note edited and saveqd", "success")
             
             return redirect(url_for('main.dashboard'))
             
@@ -324,7 +315,6 @@ def note_edit(id):
             # Creating cursor
             cur = mysql.connection.cursor()
             
-            #cur.execute("SELECT * FROM notes WHERE username = %s", [username] )
             
             cur.execute("SELECT * FROM notes WHERE id = %s", [id] )
             
@@ -340,8 +330,6 @@ def note_edit(id):
             
             #app.logger.info(username)
             
-            #title = note['title']
-            #body = note['body']
             
             return render_template("edit_note.html", form=form, pageName=pageName, note=note, id=id,
             current_time=datetime.utcnow())
@@ -352,7 +340,7 @@ def note_edit(id):
         
         
         
-@upload.route("/notes/delete/<string:id>", methods=['GET', 'POST'])
+@main.route("/notes/delete/<string:id>", methods=['GET', 'POST'])
 @is_logged_in
 def note_delete(id):
     pageName = "/notes/delete"
