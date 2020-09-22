@@ -40,6 +40,9 @@ main =  Blueprint('main', __name__)
 
 loggedin =  Blueprint('loggedin', __name__)
 
+upload =  Blueprint('upload', __name__)
+
+
 
 # Check user login status
 def is_logged_in(f):
@@ -150,6 +153,9 @@ def register():
 		name = form.name.data
 		username = form.username.data
 		email = form.email.data
+		#uploaded_file = request.files['file']
+		#if uploaded_file.filename != '':
+		#    uploaded_file.save(uploaded_file.filename)
 		password = sha256_crypt.encrypt(str(form.password.data))
 		cur = mysql.connection.cursor() 
 		#password = form.password.data
@@ -346,7 +352,7 @@ def note_edit(id):
         
         
         
-@main.route("/notes/delete/<string:id>", methods=['GET', 'POST'])
+@upload.route("/notes/delete/<string:id>", methods=['GET', 'POST'])
 @is_logged_in
 def note_delete(id):
     pageName = "/notes/delete"
@@ -379,6 +385,13 @@ def note_delete(id):
     return redirect(url_for('main.home'))
 
 
+
+main.route('/upload')
+def upload():
+    pageName = "upload"
+    return render_template('upload.html', pageName=pageName, current_time=datetime.utcnow())
+    pass
+
 # User Dashboard and Session
 @main.route('/<username>/dashboard/')
 @is_logged_in
@@ -396,10 +409,10 @@ def logout():
     return redirect(url_for('main.login'))
     
 
-@main.errorhandler(404)
+@app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html', current_time=datetime.utcnow()), 404
 
-@main.errorhandler(500)
+@app.errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html', current_time=datetime.utcnow()), 500

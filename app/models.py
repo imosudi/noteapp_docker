@@ -13,6 +13,7 @@ from flask_wtf import FlaskForm
 from wtforms import Form, StringField, SubmitField, IntegerField, HiddenField, validators, BooleanField, PasswordField
 from wtforms.validators import Required
 from wtforms.widgets import TextArea
+#from flask_wtf.file import FileField
 
 
 
@@ -24,6 +25,7 @@ class registrationForm(Form):
         validators.DataRequired(),
         validators.EqualTo('confirm', message='Passwords must match')
     ])
+    #file = FileField('File')
     confirm = PasswordField('Repeat Password')
     accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
     #The submit button was of no effect inserting data into the table

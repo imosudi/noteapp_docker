@@ -50,6 +50,8 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 from .views import main
 app.register_blueprint(main)
+#app.register_blueprint(upload)
+
 
 # Check user login status
 def is_logged_in(f):
