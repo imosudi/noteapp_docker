@@ -3,40 +3,42 @@
 
 {% block styles %}
 	<link rel="stylesheet" type="text/css"
-          href="{{url_for('static', filename='css/bootstrap.min.css')}}">
-  <link rel="stylesheet" type="text/css"
-          href="{{url_for('static', filename='css/narrow-jumbotron.css')}}">
+          				href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+  	<link rel="stylesheet" type="text/css"
+          				href="{{url_for('static', filename='css/narrow-jumbotron.css')}}">
 	<link rel="stylesheet"
 					href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/navbar-top-fixed.css">
 	<link rel="stylesheet"
 					href="//necolas.github.io/normalize.css/7.0.0/normalize.css">
 	<link rel="stylesheet"
 					href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway:900,900"  >
-  <link rel="stylesheet"
+  	<link rel="stylesheet"
 					href="https://fonts.googleapis.com/css?family=Cambay" >
 	<link rel="stylesheet"
-				href="https://fonts.googleapis.com/css?family=Roboto" >
+					href="https://fonts.googleapis.com/css?family=Roboto" >
 	<link rel="stylesheet"
-				href="https://fonts.googleapis.com/css?family=Lato" >
+					href="https://fonts.googleapis.com/css?family=Lato" >
 	<link rel="stylesheet" type="text/css"
-          href="{{url_for('static', filename='css/sticky-footer.css')}}">
-
-	<!--link rel="stylesheet" href ="//demos.creative-tim.com/now-ui-kit/assets/css/now-ui-kit.css?v=1.1.0"-->
+          				href="{{url_for('static', filename='css/sticky-footer.css')}}">
+	<link class="jsbin" rel="stylesheet" type="text/css"
+					href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"  />
+	<!--link rel="stylesheet" 
+					href ="//demos.creative-tim.com/now-ui-kit/assets/css/now-ui-kit.css?v=1.1.0"-->
 	
 	<link rel="apple-touch-icon" sizes="180x180" 
-		href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
+					href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
 	<link rel="icon" type="image/png" sizes="16x16" 
-		href="{{url_for('static', filename='favicon/android-chrome-192x192.png')}}">
+					href="{{url_for('static', filename='favicon/android-chrome-192x192.png')}}">
 	<link rel="icon" type="image/png" sizes="16x16" 
-		href="{{url_for('static', filename='favicon/android-chrome-512x512.png')}}">
+					href="{{url_for('static', filename='favicon/android-chrome-512x512.png')}}">
 	<link rel="icon" type="image/png" sizes="32x32" 
-		href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
+					href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
 	<link rel="icon" type="image/png" sizes="16x16" 
-		href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
+					href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
 	<link rel="icon" type="image/png" sizes="16x16" 
-		href="{{url_for('static', filename='favicon/favicon.ico')}}">
+					href="{{url_for('static', filename='favicon/favicon.ico')}}">
 	<link rel="manifest" 
-		href="{{url_for('static', filename='favicon/site.webmanifest')}}">
+					href="{{url_for('static', filename='favicon/site.webmanifest')}}">
 	
 
 <style>
@@ -50,8 +52,12 @@
 
 {% block scripts %}
 <script src="{{url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" 
+		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
 <!--Basic CKEDITOR-->
 <script src="//cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
 <!---Standard CKEDITOR-->
@@ -67,6 +73,8 @@ CKEDITOR.instances.noteeditor.setData(" ");
 </script>
 
 
+
+  
 <script>
 
 function textcounter() {

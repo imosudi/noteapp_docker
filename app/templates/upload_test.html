@@ -1,10 +1,44 @@
 {% extends "base.html" %}
-{#% block title %}Web App{% endblock %#}
-{% block page_content %}
 
-	<div class="form-group">
-		<label for="exampleFormControlFile1">Upload file </label>
-		<input type="file" class="form-control-file" id="exampleFormControlFile1">
-	</div>
-		
+{% block head %}
+
+{{ super() }}
+  <script>
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+  </script>
+
+  <style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+</style>
+
 {% endblock %}
+
+{% block page_content %}  
+
+	<div class="container card  content-center">
+		<input type='file' onchange="readURL(this);" />
+    		<img lass="img-responsive mx-auto " style="width:100%" id="blah" src="#" alt="Upload image" />
+	</div>
+
+{% endblock %}
+	
+	
+	
+	
+	
+
