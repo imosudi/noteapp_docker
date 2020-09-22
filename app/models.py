@@ -15,15 +15,17 @@ from wtforms.validators import Required
 from wtforms.widgets import TextArea
 #from flask_wtf.file import FileField
 
+import email_validator
+
 
 
 class registrationForm(Form):
     name = StringField('Name', [validators.Length(min=5, max=50)])
     username = StringField('Username', [validators.Length(min=4, max=25)])
-    email = StringField('Email Address', [validators.Length(min=6, max=50)])
+    email = StringField('Email Address', [validators.Email()])
     password = PasswordField('New Password', [
         validators.DataRequired(),
-        validators.EqualTo('confirm', message='Passwords must match')
+        validators.EqualTo('confirm', message='Password mismatch!')
     ])
     #file = FileField('File')
     confirm = PasswordField('Repeat Password')
