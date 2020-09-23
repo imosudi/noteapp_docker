@@ -144,17 +144,17 @@ function noshow() {
 		<br>
 	{% endif %}
 	{% block page_content %} 
-		<form class="was-validated">
-	  	  	<div class="custom-file">
-				<input type="file" class="custom-file-input " id="validatedCustomFile" required>
-					<label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-				<div class="invalid-feedback">Example invalid custom file feedback</div>
-			</div>
-			<div class="container card  content-center">
-				<input type='file' onchange="readURL(this);" />
+<form class="was-validated">
+	<div class="custom-file">
+	<input type="file" class="custom-file-input " onchange="readURL(this);" id="validatedCustomFile" required>
+	<label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+	<img class="img-responsive mx-auto  card" style="width:250px;" 
+	id="blah" src="{{url_for('static', filename='images/upload_passport.jpg')}}" alt="Upload image" />
+			<!--div class="container card  content-center">
+				<!--input type='file' onchange="readURL(this);" /->
     				<img class="img-responsive mx-auto " style="width:250px;" 
     			id="blah" src="{{url_for('static', filename='images/upload_passport.jpg')}}" alt="Upload image" />
-			</div>
+			</div-->
 		</form>
 		
 	
