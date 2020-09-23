@@ -1,39 +1,5 @@
 {% extends "base.html" %}
 
-{% block head %}
-
-{{ super() }}
-<script>
-function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#blah')
-                    .attr('src', e.target.result)
-                    .width(150)
-                    .height(200);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    
-  </script>
-
-<script>
-
-function textcounter() {
-	var charCount = CKEDITOR.instances.noteeditor.getData();
-	var notelength = (charCount.length);
-	/*alert(charCount);
-	alert(notelength);*/
-   document.getElementById('charcount').value = notelength;
-	 document.getElementById('charcount2').value = notelength;
-
-}
-</script>
-{% endblock %}
 
 	{% block page_content %} 
 	<form class="was-validated">
