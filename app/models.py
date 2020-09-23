@@ -33,7 +33,12 @@ class registrationForm(Form):
     #The submit button was of no effect inserting data into the table
     #submit = SubmitField('Complete Registeration')
 
-
+class uploadForm(Form):
+    docname = StringField( validators=[Required()])
+    phonenum = StringField('Mobile Number', [validators.Length(min=10, max=11)])
+    emailadd = StringField('Email Address', [validators.Email()])
+    pass
+    
 class loginForm(Form):
     username = StringField( validators=[Required()])
     password = PasswordField( validators=[Required()])

@@ -28,7 +28,7 @@ app.config['MYSQL_HOST'] = 'db'
 app.config['MYSQL_DB'] = 'noteappdb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-mysql = MySQL(app)
+
 
 
 """
@@ -47,10 +47,13 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
         
 """
 
+mysql = MySQL(app)
+
 
 from .views import main
+from .uploads import uploads
 app.register_blueprint(main)
-#app.register_blueprint(upload)
+app.register_blueprint(uploads)
 
 
 # Check user login status

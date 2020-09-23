@@ -13,7 +13,7 @@ from app import *
 
 
 from .models import *
-
+#from .uploads import *
 
 
 """	
@@ -107,7 +107,7 @@ def login():
 
 		# Getting looking up for the user in the database by username
 		result = cur.execute("SELECT * FROM users WHERE username = %s", [username])
-		print (result)
+		#print (result)
 
 		if result != None :
 			#Extract hash
@@ -374,11 +374,7 @@ def note_delete(id):
 
 
 
-@main.route('/upload')
-def upload():
-    pageName = "upload"
-    return render_template('upload.html', pageName=pageName, current_time=datetime.utcnow())
-    pass
+
 
 # User Dashboard and Session
 @main.route('/<username>/dashboard/')
