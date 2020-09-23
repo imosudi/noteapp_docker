@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+{% from "includes/_formhelpers.html" import render_field %}
+	<form method="POST" action="" class="was-validated">
+		<div class="form-group">
+			{{render_field(form.emailadd, class_="form-control")}}
+		</div>
+		<div class="form-group">
+			{{render_field(form.phonenum, class_="form-control")}}
+		</div>
+		<div class="custom-file  card">
+			<input type="file" class="custom-file-input " name = "docname" onchange="readURL(this);" 
+				id="validatedCustomFile" required>
+			<label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+			<img class="img-responsive mx-auto " style="width:250px;" 
+    			id="blah" src="{{url_for('static', filename='images/upload_passport.jpg')}}" 
+    			alt="Upload image" />
+		</div>
+		<p>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</p>
+	</form>
+		
+{% endblock %}
