@@ -1,0 +1,172 @@
+{% extends "bootstrap/base.html" %}
+{% block styles %}
+	<link rel="stylesheet" type="text/css"
+          				href="{{url_for('static', filename='css/doc/bootstrap.min.css')}}">
+        <link rel="stylesheet" type="text/css"
+          				href="{{url_for('static', filename='css/doc/docs.min.css')}}">
+  	<link rel="stylesheet" type="text/css"
+          				href="{{url_for('static', filename='css/narrow-jumbotron.css')}}">
+	<link rel="stylesheet"
+					href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/navbar-top-fixed.css">
+	<link rel="stylesheet"
+					href="//necolas.github.io/normalize.css/7.0.0/normalize.css">
+	<link rel="stylesheet"
+					href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway:900,900"  >
+  	<link rel="stylesheet"
+					href="https://fonts.googleapis.com/css?family=Cambay" >
+	<link rel="stylesheet"
+					href="https://fonts.googleapis.com/css?family=Roboto" >
+	<link rel="stylesheet"
+					href="https://fonts.googleapis.com/css?family=Lato" >
+	<link rel="stylesheet" type="text/css"
+          				href="{{url_for('static', filename='css/sticky-footer.css')}}">
+	<!--link class="jsbin" rel="stylesheet" type="text/css"
+					href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"  /-->
+	<!--link rel="stylesheet" 
+					href ="//demos.creative-tim.com/now-ui-kit/assets/css/now-ui-kit.css?v=1.1.0"-->
+	
+	<link rel="apple-touch-icon" sizes="180x180" 
+					href="{{url_for('static', filename='favicon/apple-touch-icon.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16" 
+					href="{{url_for('static', filename='favicon/android-chrome-192x192.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16" 
+					href="{{url_for('static', filename='favicon/android-chrome-512x512.png')}}">
+	<link rel="icon" type="image/png" sizes="32x32" 
+					href="{{url_for('static', filename='favicon/favicon-32x32.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16" 
+					href="{{url_for('static', filename='favicon/favicon-16x16.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16" 
+					href="{{url_for('static', filename='favicon/favicon.ico')}}">
+	<link rel="manifest" 
+					href="{{url_for('static', filename='favicon/site.webmanifest')}}">
+	<style>
+		.file {
+		  visibility: hidden;
+		  position: absolute;
+		}
+	</style>
+
+{% endblock %} 
+
+{% block scripts %}
+<script src="{{url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" 
+		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/docs.min.js')}}"></script>
+
+<!--Basic CKEDITOR-->
+<script src="//cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
+<!---Standard CKEDITOR-->
+<!--script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"--></script>
+<script type="text/javascript">
+CKEDITOR.replace('noteeditor');
+</script>
+
+<script type="text/javascript">
+function clearnoteeditor() {
+CKEDITOR.instances.noteeditor.setData(" ");
+}
+</script>
+
+
+
+<script>
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+  </script>
+  
+<script>
+
+function textcounter() {
+	var charCount = CKEDITOR.instances.noteeditor.getData();
+	var notelength = (charCount.length);
+	/*alert(charCount);
+	alert(notelength);*/
+   document.getElementById('charcount').value = notelength;
+	 document.getElementById('charcount2').value = notelength;
+
+}
+</script>
+
+<!--script>
+function noshow() {
+//var charcount3 = document.getElementById("charCount");
+		var charcount3 = CKEDITOR.instances.noteeditor.getData();
+		var notelength = (charcount3.length);
+		document.getElementById('charcount4').value = notelength;
+
+/*CKEDITOR.instances.editor1.on("key", function (event)
+{
+        charCount.innerHTML = CKEDITOR.instances.editor1.getData().length;
+});
+*/
+}
+</script-->
+
+
+
+
+
+
+{{ moment.include_moment() }}
+{% endblock %}
+
+
+{% include 'includes/_navigationbar.html' %}
+
+{% block content %}
+
+	{% include 'includes/_messages.html' %}
+	{% if session.logged_in == True %}
+		<p>
+			<button type="button" class="btn btn-success float-right badge-pill">
+  							{{ session.name }} {% if pageName == 'dashboard' %}:
+								<span class="badge badge-light">{{ result }} Notes</span>{% endif %}
+			</button>
+			<br>
+		</p>
+		<br>
+	{% endif %}
+	{% block page_content %} 
+		<form class="was-validated">
+	  	  	<div class="custom-file">
+				<input type="file" class="custom-file-input " id="validatedCustomFile" required>
+					<label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+				<div class="invalid-feedback">Example invalid custom file feedback</div>
+			</div>
+			<div class="container card  content-center">
+				<input type='file' onchange="readURL(this);" />
+    				<img class="img-responsive mx-auto " style="width:250px;" 
+    			id="blah" src="{{url_for('static', filename='images/upload_passport.jpg')}}" alt="Upload image" />
+			</div>
+		</form>
+		
+	
+	{% endblock %}
+
+</div>
+<footer class="footer">
+	<div class="container" style="text-align:center;">
+		&copy; copyright {{ moment(current_time).format('YYYY') }}
+		|<a href="mailto:imosudi@gmail.com"> imosudi@gmail.com</a>
+		|<a href="http://www.mioemi.com"> www.mioemi.com</a>
+	</div>
+</footer>
+{% endblock %}
+
