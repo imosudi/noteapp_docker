@@ -1,12 +1,11 @@
 version: '3'
 services:
-  #web:
-  #  build: .
-  #  ports:
-  #    - "8082:8082"
-  #  depends_on:
-  #    - db
-  
+  web:
+    depends_on:
+      - db
+    build: .
+    ports:
+      - "8082:8082"
   db:
     #image: mariadb
     build: database/
@@ -16,9 +15,19 @@ services:
       MYSQL_DATABASE: noteappdb
       MYSQL_USER: noteappdb
       MYSQL_PASSWORD: password
-  web_a:
-    build: .
-    ports:
-      - "8082:8082"
-    depends_on:
-      - db
+  #web_a:
+  #  build: .
+  #  ports:
+  #    - "8082:8082"
+  #  depends_on:
+  #    - db
+  phpmyadmin:
+      depends_on:
+       - db
+      image: phpmyadmin/phpmyadmin
+      container_name: phpmyadmin
+      restart: always
+      ports:
+       - '8080:80'
+      environment:
+        PMA_HOST: db

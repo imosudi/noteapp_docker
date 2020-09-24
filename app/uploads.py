@@ -22,7 +22,7 @@ def upload():
         phonenum 	= form.phonenum.data
         docname 	= secure_filename(docfile.filename)
         docfile 	= docfile.read() #.filename
-        print(docname, emailadd, phonenum, docfile)
+        #print(docname, emailadd, phonenum, docfile)
         
         cur = mysql.connection.cursor()
         
