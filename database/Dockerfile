@@ -2,12 +2,11 @@
 #FROM mysql
 FROM mariadb:10.1
 
-#FROM mysql:latest
+#Setting local timezone
+ENV TZ=Africa/Lagos
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 
-
-#Use docker secret in PRODUCTION
-#ENV MYSQL_ROOT_PASSWORD PASSWimosudi@gmail.co767868FFGFFDD#m
 ENV MYSQL_ROOT_PASSWORD=password
 
 
@@ -26,10 +25,3 @@ COPY ./sqlscripts/ /docker-entrypoint-initdb.d
 RUN chown -R mysql:mysql /docker-entrypoint-initdb.d/
 
 EXPOSE 3306
-
-#docker build -t imosudi/noteappdb .
-##docker run -d -p 3306:3306 --name imosudi/noteappdb \
-##-e MYSQL_ROOT_PASSWORD=supersecret imosudi/noteappdb
-
-
-
