@@ -4,12 +4,12 @@
 
 {% from "includes/_formhelpers.html" import render_field %}
 	<form method="POST" action="" enctype="multipart/form-data" class="was-validated">
-		<div class="form-group">
+		<!--div class="form-group">
 			{{render_field(form.emailadd, class_="form-control")}}
 		</div>
 		<div class="form-group">
 			{{render_field(form.phonenum, class_="form-control")}}
-		</div>
+		</div-->
 		<div class="custom-file  card">
 			<input type="file" class="custom-file-input " name = "docfile" onchange="readURL(this);" 
 				id="validatedCustomFile" required>
