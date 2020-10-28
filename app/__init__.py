@@ -1,8 +1,15 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-#from flask_mysqldb import MySQL
-import mysql.connector as mariadb
+from flask_mysqldb import MySQL
+
+from passlib.hash import sha256_crypt
+
+#import mysql.connector as mariadb
+
+
+from functools import wraps
+
 
 from .models import *
 
@@ -14,40 +21,50 @@ bootstrap = Bootstrap(app)
 moment = Moment(app)
 
 
-"""#Config MySQL
-app.config['MYSQL_HOST'] = '172.17.0.2'
-app.config['MYSQL_USER'] = 'root'
-#app.config['MYSQL_PASSWORD'] = 'imosudi@gmail.com'
-app.config['MYSQL_PASSWORD'] = 'PASSWimosudi@gmail.co767868FFGFFDD#m'
-app.config['MYSQL_DB'] = 'noteapp'
+#Config MySQL
+app.config['MYSQL_USER'] = 'noteappdb'
+app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_HOST'] = 'db'
+app.config['MYSQL_DB'] = 'noteappdb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 
 
-# init MySQL
-mysql = MySQL(app)"""
 
-#Config Mariadb
+"""
 config = {
-    'host': 'db',
-    'port': '3306',
-    'user': 'root',
-    #'password': 'PASSWimosudi@gmail.co767868FFGFFDD#m',
-    'password': 'password',
-    'database': 'noteapp'
-}
+	'host': 'db',
+        'database': 'noteappdb',
+        'user': 'noteappdb',
+        'password': 'password'
+        }
+app.config['MYSQL_USER'] = 'sql2366691'
+app.config['MYSQL_PASSWORD'] = 'lD9%zU9%'
+app.config['MYSQL_HOST'] = 'sql2.freemysqlhosting.net'
+app.config['MYSQL_DB'] = 'sql2366691'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-#I will use this to for my conections within the application
-''' # connection for MariaDB
-   conn = mariadb.connect(**config)
-   # create a connection cursor
-   cur = conn.cursor()
-   # execute a SQL statement
-   cur.execute("select * from people")
-'''
+        
+"""
+
+mysql = MySQL(app)
 
 
 from .views import main
+from .uploads import uploads
 app.register_blueprint(main)
+app.register_blueprint(uploads)
+
+
+# Check user login status
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash(u'Unauthorized, Please login', 'danger')
+            return redirect(url_for('login'))
+    return wrap
 
 #from app import views

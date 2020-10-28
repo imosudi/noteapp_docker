@@ -5,29 +5,35 @@
 
 <div class="container content-center">
 {% from "includes/_formhelpers.html" import render_field %}
-	<form method="POST" action="" class="container">
+	<form method="POST" action="" class="container card ">
+	<p>
+		<div class="row">
+			<div class="col-7">
+				<div class="form-group">
+					{{render_field(form.name, class_="form-control")}}
+				</div>
 
-		<div class="form-group">
-			{{render_field(form.name, class_="form-control")}}
+				<div class="form-group">
+					{{render_field(form.email, class_="form-control")}}
+				</div>
+
+				<div class="form-group">
+					{{render_field(form.username, class_="form-control")}}
+				</div>
+
+				<div class="form-group">
+					{{render_field(form.password, class_="form-control")}}
+				</div>
+
+				<div class="form-group">
+					{{render_field(form.confirm, class_="form-control")}}
+				</div>
+			</div>
+			<div class="col-5">
+				<img class="img-responsive mx-auto " style="width:100%"
+          src="{{url_for('static', filename='images/register.jpg')}}" style=" height:90%; ">
+			</div>
 		</div>
-
-		<div class="form-group">
-			{{render_field(form.email, class_="form-control")}}
-		</div>
-
-		<div class="form-group">
-			{{render_field(form.username, class_="form-control")}}
-		</div>
-
-		<div class="form-group">
-			{{render_field(form.password, class_="form-control")}}
-		</div>
-
-
-		<div class="form-group">
-			{{render_field(form.confirm, class_="form-control")}}
-		</div>
-
 		<div class="form-check">
 			{{render_field(form.accept_tos, class_="form-check-label")}}
 			I accept Terms and Conditions.
@@ -37,5 +43,12 @@
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</p>
 	</form>
+	
+	<!--- 
+	<div class="form-group">
+    <label for="exampleFormControlFile1">Example file input</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+	--->
 </div>
 {% endblock %}

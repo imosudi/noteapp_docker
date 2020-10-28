@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+	{% block page_content %} 
+	<form class="was-validated">
+		<div class="custom-file  card">
+			<input type="file" class="custom-file-input " onchange="readURL(this);" id="validatedCustomFile" required>
+			<label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+			<img class="img-responsive mx-auto " style="width:250px;" 
+    			id="blah" src="{{url_for('static', filename='images/upload_passport.jpg')}}" alt="Upload image" />
+		</div>
+	</form>
+		
+	
+	{% endblock %}
+
+

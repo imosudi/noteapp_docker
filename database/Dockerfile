@@ -1,31 +1,27 @@
 # Official mysql image as the base image
 #FROM mysql
-FROM mariadb
+FROM mariadb:10.1
 
-#RUN sed -e '/BBB/s/^/#/g' -i /etc/mysql/my.cnf
+#Setting local timezone
+ENV TZ=Africa/Lagos
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN sed  '/\[mysqld\]/a skip-networking'  -i /etc/mysql/my.cnf 
-RUN sed  '/\[mysqld\]/a  bind-address = 0.0.0.0' -i /etc/mysql/my.cnf
 
-
-#Use docker secret in PRODUCTION
-#ENV MYSQL_ROOT_PASSWORD PASSWimosudi@gmail.co767868FFGFFDD#m
-ENV MYSQL_ROOT_PASSWORD password
+ENV MYSQL_ROOT_PASSWORD=password
 
 
 # Add a database
-ENV MYSQL_DATABASE noteappdb
+ENV MYSQL_DATABASE=noteappdb
+ENV MYSQL_USER=noteappdb
+ENV MYSQL_PASSWORD=password
 
 # All scripts in docker-entrypoint-initdb.d/ 
 # are automatically executed during container startup
 
-COPY ./sqlscripts/ /docker-entrypoint-initdb.d/
+COPY ./sqlscripts/ /docker-entrypoint-initdb.d
+
+#ADD sqlscripts/init.sql /docker-entrypoint-initdb.d
+
+RUN chown -R mysql:mysql /docker-entrypoint-initdb.d/
 
 EXPOSE 3306
-
-#docker build -t imosudi/noteappdb .
-##docker run -d -p 3306:3306 --name imosudi/noteappdb \
-##-e MYSQL_ROOT_PASSWORD=supersecret imosudi/noteappdb
-
-
-
