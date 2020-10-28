@@ -11,7 +11,7 @@ RUN apk update add python3-dev build-deps gcc python3-dev musl-dev mysql-client 
 
 #RUN apk add --update py3-pip3
 
-RUN python3.8 -m pip install --upgrade pip 
+#RUN python3.8 -m pip install --upgrade pip 
 
 WORKDIR /noteapp_docker
 
