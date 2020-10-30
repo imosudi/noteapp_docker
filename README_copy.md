@@ -9,6 +9,7 @@ Ensure that Docker and Docker compose are installed
 	docker-compose up --build 
 
 Then visit:
+	
 	http://server-ip-address/     		noteapp
 	
 	http://server-ip-address:8080/		app database phpmyadmin
