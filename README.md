@@ -1,6 +1,8 @@
 ﻿# noteapp_docker
 Dockerizing a basic CRUD Python web application.
 
+<img src="https://github.com/imosudi/noteapp_docker/blob/master/app/static/images/web_view.png" />
+
 	Ensure that Docker and Docker compose are installed
 	docker -v
 	docker-compose -v
@@ -17,7 +19,7 @@ Then visit:
 	
 	http://server-ip-address:8080/		app database phpmyadmin
 
-<img src="https://github.com/imosudi/noteapp_docker/blob/master/app/static/images/web_view.png" />
+
 
 
 
