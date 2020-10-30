@@ -6,7 +6,7 @@ Dockerizing a basic CRUD Python web application.
 	Ensure that Docker and Docker compose are installed
 	docker -v
 	docker-compose -v
-	Otherwise install docker and docker-compose
+	Otherwise, install docker and docker-compose
 
 Then run the following commands:
 	
