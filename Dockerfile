@@ -31,8 +31,8 @@ EXPOSE 56733
 
 #CMD ["/usr/bin/python3", "app.py"] #CMD ["python3", "main.py"] #CMD ["gunicorn", "app:app", "--config=config.py"]
 
-<<<<<<< HEAD
-CMD ["python3", "main.py"]
-=======
+#<<<<<<< HEAD
+#CMD ["python3", "main.py"]
+#=======
 CMD ["gunicorn", "main:app", "--config=config.py"]
->>>>>>> 2529bcd3491014954b70bc4787552a2b3f1b13d6
+#>>>>>>> 2529bcd3491014954b70bc4787552a2b3f1b13d6
