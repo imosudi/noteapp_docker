@@ -1,6 +1,7 @@
 ﻿# noteapp_docker
 Dockerizing a basic CRUD Python web application.
 
+
 Ensure that Docker and Docker compose are installed
 
 	git clone https://github.com/imosudi/noteapp_docker.git
